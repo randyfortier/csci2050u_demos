@@ -1,3 +1,3 @@
 all: helloworld.asm
-	nasm -f elf64 -F dwarf -g -o helloworld.o helloworld.asm 
+	yasm -a x86 -m amd64 -g dwarf2 -f elf64 -o helloworld.o helloworld.asm 
 	gcc -m64 -no-pie -o helloworld.out helloworld.o
