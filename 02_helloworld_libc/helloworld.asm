@@ -8,15 +8,15 @@ global main
 section .text
 
 main:
-    ; printf("Hello from LibC!")   <- basically, this
+    ; printf(message)              <- basically, this
     ; printf("%s", message)        <- more accurately, this
-    ; arguments:  rdi, rsi, rax
+    ; arguments:  rdi, rsi
     ; return value: rax
-    mov rdi, format 
-    mov rsi, message 
-    mov rax, 0
+    mov rdi, format             ; argument #1 ("%s")
+    mov rsi, message            ; argument #2 ("Hello from LibC!")
+    mov rax, 0                  ; how many floating point arguments are there to printf()?
+    sub rsp, 8                  ; must be 16-byte aligned (more on this later)
     call printf
-    sub rsp, 8
 
     ; exit(0)
     mov rax, 0
