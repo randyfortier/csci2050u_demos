@@ -1,6 +1,7 @@
 ; this example is another hello world example, but this time using the C library (libc)
 
 extern printf
+extern exit
 
 global main
 
@@ -15,11 +16,11 @@ main:
     mov rsi, message 
     mov rax, 0
     call printf
+    sub rsp, 8
 
-    ; exit(0) or return 0
+    ; exit(0)
     mov rax, 0
-    ret
-
+    call exit
 
 section .data
     format db "%s", 0ah, 0dh, 0
